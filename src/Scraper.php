@@ -50,7 +50,7 @@ class Scraper
         }
 
         $params = [
-            'action' =>sprintf("https://e-ticket.aegeanair.com/A3Responsive/dyn/air/booking/%s.json;%s",
+            'action' =>sprintf("https://e-ticket.aegeanair.com/A3Responsive/dyn/air/booking/%s.json;jsessionid=%s",
                 $vars['firstBeCallTargetName'], $vars['jsessionid']),
             'post'  => [
                 "dataType:json" => "",
