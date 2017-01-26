@@ -35,6 +35,22 @@ class Scraper
         return $info;
     }
 
+    public function getApiParams($body)
+    {
+        // quick and dirty javascript var extraction
+        $count = preg_match_all('#var ([^=; ]*?)\s*=\s*([\s\S]*?)\n#', $body, $matches, PREG_SET_ORDER);
+        $vars = [];
+        foreach($matches as list($expr, $var, $value)){
+            $value = preg_replace_callback('/\\\\u([0-9a-fA-F]{4})/', function ($match) {
+                return mb_convert_encoding(pack('H*', $match[1]), 'UTF-8', 'UCS-2BE');
+            }, trim($value, "\r\n;"));
+            $json = \json_decode('[' . preg_replace("#'(.*?)'#", '"\1"', $value) . ']');
+            if(!$json) continue;
+            $vars[$var] = $json[0];
+        }
+        return $vars;
+    }
+
     /**
      * @param $body
      * @return \DOMDocument
