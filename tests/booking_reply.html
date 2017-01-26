@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns:ng="http://angularjs.org" id="ng-app"
+   ng-app="aegeanBookingRuntime"
+   ng-controller="DocumentController as documentController" lang="en">
+<head>
+<!-- keep the title as hardcoded text for search engine visibility-->
+<!-- the title is then changed by PageTitleService to match the current step -->
+<title>Aegean Airlines</title>
+<link rel="shortcut icon" ng-href="../../../cui-a3online-responsive_R3.1.27_240117/img/favicon-aegean.ico">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=8; IE=9; IE=10; IE=11">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<base href="https&#x3a;&#x2f;&#x2f;e-ticket.aegeanair.com&#x2f;A3Responsive&#x2f;dyn&#x2f;air&#x2f;booking&#x2f;" />
+
+
+
+
+<!-- Wait for CSS to be loaded before displaying waiting panel. -->
+<!-- Otherwise the waiting panel is misplaced for a short period of time before CSS is loaded -->
+<style>
+.hideDuringCssLoad {
+  display: none ! important;
+}
+</style>
+</head>
+<body ng-class="[skinService.skinName, flowName]">
+   <!-- container.jsp -->
+
+   <!-- form to submit to same url with appended jsessionid in case history replaceState API is not available -->
+   <form id="_DELME" method="POST"></form>
+
+   
+   <!-- TODO pass in model somewhere if traces are enabled or not. THis doesn't work -->
+   
+   <div style="z-index: 100; position: fixed; right: 5px; top: 25px;">
+      <ghost-download-link></ghost-download-link>
+   </div>
+
+   <div ui-view class="globalWrapper">
+      <!-- Waiting panel on PAGE loading. -->
+      <!-- The same code block exists in mockup's "booking.html" AND "waitingPanel.html" directive and is copied
+        MANUALLY. -->
+      <!-- * "booking.html" : Uses hardcoded values for image to display and "please wait" message -->
+      <!-- * "waitingPanel.html" : Uses AngularJs directive bindings -->
+      <!-- * "container.jsp" : Uses JSP templating (from the server) so we don't need Angular to be boostraped -->
+      <!-- Please TAKE CARE before updating -->
+
+      <div class="waitingPanel hideDuringCssLoad shown">
+         <div class="waitingPanelImgContainer">
+
+            <div class="hide-for-large-up text-center loadingContainer">
+               <div class="loaderContainer"></div>
+               <div class="hide-for-small-only">
+                  <em>Please wait...</em>
+               </div>
+            </div>
+
+
+            <div class="show-for-large-up row valign-middle waitingContent">
+              <img src="..&#x2f;..&#x2f;..&#x2f;cui-a3online-responsive_R3.1.27_240117&#x2f;img&#x2f;passive&#x2f;waitingContent_skin_aegean_GB.gif"/>                  
+            </div>
+         </div>
+
+      </div>
+   </div>
+   
+  <script src="../../../cui-a3online-responsive_R3.1.27_240117/js/a3_js_bom.js"></script>
+  <script type="text/javascript">
+    var perfAnalytics;!function(e){var n=function(){function e(){}return e.recordZeroTime=function(){e.zeroTime=(new Date).getTime(),e.log("zeroTime")},e.addEvent=function(n){var o=(new Date).getTime()-e.zeroTime;e.events[n]||(e.events[n]=[]),e.log("event "+n+" at "+o),e.events[n].push(o)},e.logData=function(){var n=e.logEnabled;e.logEnabled=!0,_.each(e.events,function(n,o){e.log(o+": "+n[0]/1e3)}),e.logEnabled=n},e.log=function(n){e.logEnabled&&console.log("PerfAnalytics: "+n)},e.zeroTime=null,e.events={},e.logEnabled=!0,e}();e.PerfAnalytics=n}(perfAnalytics||(perfAnalytics={}));
+    perfAnalytics.PerfAnalytics.recordZeroTime();
+    
+    var requestDoneFromJsp = true;
+    var jsessionid ="x4_cr0ru5r6aqkC8woLocwxF7lTfdL_F7DcsCPJ8D-9LYqTQoe2s!1149321654!-410121848!1485466192622";
+    var flowPages =["flight","passenger","extras","car","hotel","payment"];
+    var flowName ="booking";
+    var serverDate ="2017-01-26";
+    var entryRequestParams ={"WDS_INSURANCE_PRESELECT":"NONE","SO_SITE_QUEUE_OFFICE_ID":"ATHA308AA","WDS_PROMOCODE_ROUTE_AUTHORIZED":"TRUE","B_LOCATION_1":"AMS","WDS_GO_TO_MY_BOOKING_URL":"https://en.aegeanair.com/MyBooking.axd","DATE_RANGE_VALUE_2":"3","DATE_RANGE_VALUE_1":"3","WDS_CFF_TOUSE":"CFF01FEB14","WDS_ATCOM_TIMEOUT":"5000","WDS_AMOP_FEE_APPLY":"PER_TRANSACTION","WDS_PROMO_SLOT_URL":"https://en.aegeanair.com/PromoSlots.axd","WDS_DISPLAY_EMAIL_IN_BROWSER_URL":"https://en.aegeanair.com/ConfirmationEmail.axd","E_LOCATION_1":"ATH","WDS_AFFILIATE_STATUS":"C","WDS_TAXES_DISPLAY_ENABLED":"TRUE","TRAVELLER_TYPE_1":"ADT","WDS_AMOP_LIST_DEACTIVATED":"PAYPAL","WDS_ONLY_DIRECT_REQUESTED":"FALSE","WDS_ADD_BOOK_NOW_BUTTON_EMAF":"TRUE","WDS_FARE_COMPARISON_URL":"https://en.aegeanair.com/FareFamilyComparison.axd","SO_SITE_OFFICE_ID":"ATHA308AA","WDS_USE_A3_SOS_INSURANCE_PANEL":"TRUE","SO_GL":"\u003CSO_GL\u003E\t\u003CGLOBAL_LIST\u003E\t\t\u003CNAME\u003ESL_TRAVELLER_TYPE_LIST\u003C/NAME\u003E\t\t\u003CLIST_ELEMENT\u003E\u003CCODE\u003EADT\u003C/CODE\u003E\u003CLIST_VALUE\u003EAdult\u003C/LIST_VALUE\u003E\u003CLIST_VALUE\u003EN\u003C/LIST_VALUE\u003E\u003CLIST_VALUE\u003EADT\u003C/LIST_VALUE\u003E\u003C/LIST_ELEMENT\u003E\t\t\u003CLIST_ELEMENT\u003E\u003CCODE\u003EB15\u003C/CODE\u003E\u003CLIST_VALUE\u003EYoung adult\u003C/LIST_VALUE\u003E\u003CLIST_VALUE\u003EN\u003C/LIST_VALUE\u003E\u003CLIST_VALUE\u003EB15\u003C/LIST_VALUE\u003E\u003C/LIST_ELEMENT\u003E\t\t\u003CLIST_ELEMENT\u003E\u003CCODE\u003EC07\u003C/CODE\u003E\u003CLIST_VALUE\u003EYouth\u003C/LIST_VALUE\u003E\u003CLIST_VALUE\u003EN\u003C/LIST_VALUE\u003E\u003CLIST_VALUE\u003EC07\u003C/LIST_VALUE\u003E\u003C/LIST_ELEMENT\u003E\t\t\u003CLIST_ELEMENT\u003E\u003CCODE\u003EC03\u003C/CODE\u003E\u003CLIST_VALUE\u003EChild\u003C/LIST_VALUE\u003E\u003CLIST_VALUE\u003EN\u003C/LIST_VALUE\u003E\u003CLIST_VALUE\u003EC03\u003C/LIST_VALUE\u003E\u003C/LIST_ELEMENT\u003E\t\t\u003CLIST_ELEMENT\u003E\u003CCODE\u003EINF\u003C/CODE\u003E\u003CLIST_VALUE\u003EInfant\u003C/LIST_VALUE\u003E\u003CLIST_VALUE\u003EN\u003C/LIST_VALUE\u003E\u003CLIST_VALUE\u003EINF\u003C/LIST_VALUE\u003E\u003C/LIST_ELEMENT\u003E\t\u003C/GLOBAL_LIST\u003E\u003C/SO_GL\u003E","WDS_EXTERNAL_CSS_URL":"https://en.aegeanair.com/css/1A/responsive.css?v=3","WDS_CLEAR_CONTENT_URL":"https://book.aegeanair.com/CLEAR_CONTENT_URL.axd","WDS_URL_WAITING_CONTENT":"https://en.aegeanair.com/WaitingPage.axd","DATE_RANGE_QUALIFIER_1":"C","SO_SITE_POINT_OF_SALE":"ATH","DATE_RANGE_QUALIFIER_2":"C","FORCE_OVERRIDE":"TRUE","WDS_HOTEL_ENABLED":"TRUE","B_DATE_1":"201701260000","WDS_FARE_CONDITIONS_URL":"https://en.aegeanair.com/ffc.axd","B_DATE_2":"201701270000","WDS_PARKING_PANEL_URL":"https://en.aegeanair.com/PromoSlots.axd","WDS_ADVERTISING_PANEL_CONF_ACTIVATED":"true","WDS_BUSINESS_ON_BOARD_DISPLAY_IN_LOGIN_PANEL":"TRUE","ARRANGE_BY":"NDE","WDS_ENABLE_PARKING":"TRUE","WDS_HOTEL_PANEL_URL":"https://en.aegeanair.com/PromoSlots.axd","WDS_PROMOTION_RBD_LIST":"P","WDS_SMS_PROVIDER_EMAIL":"aegean_bc@mpassltd.gr","WDS_SB_HOTEL_TIMEOUT":"15000","WDS_AMOP_FEE_CALCULATION":"PER","WDS_DONATION_PANEL_URL":"https://en.aegeanair.com/PromoSlots.axd","WDS_BAG_POLICY_PANEL_URL":"https://en.aegeanair.com/PromoSlots.axd","WDS_OBFEE_FROM_NEWPOLICY_ACTIVATED":"TRUE","WDS_CC_FEE_CARD_TYPE":"VI:0;CA:0;MA:0;AX:0;DC:0;","WDS_AMOP_FEE":"PAYPAL:0;SOFORT:0;","WDS_URL_FACADE_ERROR":"https://en.aegeanair.com/plan/book-a-flight/","WDS_INSURANCE_PANEL_URL":"https://en.aegeanair.com/PromoSlots.axd","WDS_BAG_PLACEHOLDER_URL":"https://en.aegeanair.com/PromoSlots.axd","WDS_HANDLE_SOS_AS_RM_FEE":"FALSE","WDS_ASSISTANCE_REQUEST_ACTIVATED":"true","WDS_CALENDAR_TO_UPSELL_FLEXIBLE_ACTIVATED":"3","WDS_LATE_LOGIN_ENABLED":"TRUE","BOOKING_FLOW":"FLEX_OWD_REVENUE","WDS_PHONE_PRESELECT_COUNTRY_CODE":"MX","WDS_INSURANCE_ACTIVATED":"TRUE","WDS_CAR_PANEL_URL":"https://en.aegeanair.com/PromoSlots.axd","SITE":"E00KE00K","DISPLAY_TYPE":"2","FLEXIBILITY":"3","WDS_BUSINESS_ON_BOARD_ENABLED":"TRUE","WDS_BUSINESS_ON_BOARD_PAX_TYPE":"ADT","WDS_MEAL_HANDLER_URL":"https://en.aegeanair.com/MealHandler.axd","WDS_HOTEL_RECOMMENDATION_PANEL_URL":"https://en.aegeanair.com/PromoSlots.axd","TRIP_TYPE":"R","WDS_MILES_EARNED_HANDLER_URL":"https://en.aegeanair.com/AwardedMiles.axd","SKIN":"skin_aegean","WDS_SOCIAL_SHARED_URL":"https://en.aegeanair.com/shared","WDS_CAR_ENABLED":"TRUE","COMMERCIAL_FARE_FAMILY_1":"CFF01FEB14","PRICING_TYPE":"O","WDS_SMS_OPTION":"SHOW","WDS_USEFUL_LINKS_PANEL_URL":"https://en.aegeanair.com/PromoSlots.axd","WDS_CC_LIST":"VI:CA:MA:AX:DC","LANGUAGE":"GB","WDS_RESKIN":"TRUE","SO_SITE_POINT_OF_TICKETING":"ATH","WDS_CALLCENTER_EMAIL":"res1@aegeanair.com","SO_SITE_PREBOOK_DURATION":"I180","WDS_EMAF_BOOK_NOW_URL":"https://en.aegeanair.com/PostHandler.axd","WDS_DONATION_PANEL_ACTIVATED":"TRUE","WDS_LATE_LOGIN_URL":"https://en.aegeanair.com/api/v1/members/auth","WDS_AVAIL_PRICE_DISPLAY_TYPE":"PER_ADT_WITH_TAX_NO_FEE","WDS_CC_FEE_ZERO_DISPLAYED":"FALSE","WDS_CHANNEL":"B2C","WDS_URL_FACADE_NEWSEARCH":"https://en.aegeanair.com/plan/book-a-flight/","WDS_CC_FEE_NO_CARD":"0","WDS_PROMOCODE_HANDLER_URL":"https://en.aegeanair.com/PromoCodeHandler.axd"};
+    var crossFlowTransitionParameters = {};
+    var wdsParams ={"@c":".ConfigParametersHolderData","WDS_PARTNER_CARRIER_CODES":["LH","BD","TP","SN","CO","JK","US","SK","OA","OS","SQ","S7","MS","EY","LO","TK","AC","BT","RO","ET","JU"],"WDS_LIMITED_REBOOKING_PAX_TYPES":["INF","CHD","^(C\\d\\d)$","^(U\\d\\d)$","IIT"],"WDS_ENABLE_REBOOKING_BUTTON_ON_MOBILE":false,"WDS_ECONOMY_WARNING_INTERNATIONAL_NAS_ALPHA":["X"],"WDS_FREQUENT_FLYER_SUPPORTED":true,"WDS_BAG_PLACEHOLDER_URL":"https://en.aegeanair.com/PromoSlots.axd","WDS_INSURANCE_PRESELECT":false,"WDS_BUSINESS_WARNING_ENABLED":true,"WDS_SOCIAL_SHARED_URL":"https://en.aegeanair.com/shared","WDS_REMARKETING_CAMPAIGN_ACTIVATED":true,"WDS_EMAF_BOOK_NOW_URL":"https://en.aegeanair.com/PostHandler.axd","WDS_SUPPRESS_HEADER":false,"WDS_DISPLAY_INVOICE":"SHOW","WDS_FLOODLIGHT_ANALYTICS_URL":"https://4131733.fls.doubleclick.net/activityi;src=4131733;type=aegea810;cat=aegea780;qty=1;cost={totalPrice};ord={recordLocator}?","WDS_PRODUCTION_SERVERS":["e-ticket.aegeanair.com","e-ticket.olympicair.com"],"WDS_AMOP_LIST_DEACTIVATED":["PAYPAL"],"WDS_TAXES_DISPLAY_ENABLED":true,"WDS_DONATION_PANEL_ACTIVATED":true,"WDS_DEVICE_APP":false,"WDS_PRESELECT_LOWEST_DIRECT_FLIGHT":true,"WDS_SB_HOTEL_TIMEOUT":15000,"WDS_USEFUL_LINKS_PANEL_URL":"https://en.aegeanair.com/PromoSlots.axd","WDS_URL_WAITING_CONTENT":"https://en.aegeanair.com/WaitingPage.axd","WDS_MILES_EARNED_ACTIVATE_CODESHARE":true,"WDS_DISPLAY_WARNING_INSURANCE":false,"WDS_BAGGAGE_POLICY_PANEL_OWCO_ACTIVATED":true,"WDS_GO_TO_MY_BOOKING_URL":"https://en.aegeanair.com/MyBooking.axd","WDS_ECONOMY_WARNING_ENABLED":true,"WDS_MILES_EARNED_HANDLER_URL":"https://en.aegeanair.com/AwardedMiles.axd","WDS_ECONOMY_WARNING_INTERNATIONAL":["P","U","T","S","K","L","W","V","Q","H","M","B","Y","E"],"WDS_URL_FACADE_ERROR":"https://en.aegeanair.com/plan/book-a-flight/","WDS_PROMO_SLOT_URL":"https://en.aegeanair.com/PromoSlots.axd","WDS_PROMOCODE_DEACTIVATED_LIST":null,"WDS_PROMOCODE_HANDLER_URL":"https://en.aegeanair.com/PromoCodeHandler.axd","WDS_ASSISTANCE_SSR_SUPPORTED_AIRLINE_CODES":["A3","OA"],"WDS_BUSINESS_ON_BOARD_DISPLAY_IN_LOGIN_PANEL":true,"WDS_REBOOKING_ON_OLD_UI":true,"WDS_INSURANCE_ACTIVATED":true,"WDS_MY_BOOKING_ITINERARY_EXPANDED":false,"WDS_TAX_LIST":["YR"],"WDS_ALPHA_BONUS_FLOW":false,"WDS_ECONOMY_WARNING_NATIONAL":["P","U","T","S","K","L","W","V","Q","H","M","B","Y","F"],"WDS_SB_CAR_TYPE":"SBC","WDS_MILES_EARNED_NON_CODESHARE_AIRLINES":["A3","OA"],"WDS_MOCK_EXTERNAL_PROVIDER":false,"WDS_AVAIL_PRICE_DISPLAY_TYPE":"PER_ADT_WITH_TAX_NO_FEE","WDS_MY_BOOKING_BAGGAGE_EXPANDED":true,"WDS_CAR_PANEL_URL":"https://en.aegeanair.com/PromoSlots.axd","WDS_CC_FEE_ZERO_DISPLAYED":false,"WDS_PROMOCODE_FLIGHT_LIST":null,"WDS_CALENDAR_TO_UPSELL_FLEXIBLE_ACTIVATED":3,"WDS_FARE_CONDITIONS_URL":"https://en.aegeanair.com/ffc.axd","WDS_PROMOCODE_TRIPTYPE_LIST":null,"WDS_CALENDAR_ENABLE_LOWEST_PRICE_LEGEND":false,"WDS_AMOP_FEE_APPLY":"PER_TRANSACTION","WDS_MILES_EARNED_ACTIVATE":true,"WDS_MULTI_AIRPORT_CITIES":["LON"],"WDS_BUSINESS_WARNING_INTERNATIONAL_NAS_ALPHA":["I"],"WDS_DISPLAY_EMAIL_IN_BROWSER_URL":"https://en.aegeanair.com/ConfirmationEmail.axd","WDS_MEAL_LIST_PROPOSED":["AVML","BBML","BLML","CHML","DBML","FPML","GFML","HNML","LCML","LFML","LSML","KSML","MOML","NLML","RVML","SFML","VGML","VJML","VLML","VOML"],"WDS_BAG_POLICY_PANEL_URL":"https://en.aegeanair.com/PromoSlots.axd","WDS_TEALEAF_ENABLED":false,"WDS_SMS_OPTION":"SHOW","WDS_BUSINESS_WARNING_NATIONAL":["D","C","Z","I"],"WDS_SMS_SENDER_EMAIL":"defineA3@amadeus.com","WDS_ATCOM_TIMEOUT":5000,"WDS_BUSINESS_WARNING_NATIONAL_NAS_ALPHA":["I"],"WDS_BUSINESS_ON_BOARD_ENABLED":true,"WDS_LATE_LOGIN_ENABLED":true,"WDS_CHANNEL":"B2C","WDS_AMOP_FEE_CALCULATION":"PER","WDS_BUSINESS_WARNING_INTERNATIONAL":["C","Z","D","A","I"],"WDS_ASSISTANCE_REQUEST_ACTIVATED":true,"WDS_CC_LIST":["VI","CA","MA","AX","DC"],"WDS_CLEAR_CONTENT_URL":"https://book.aegeanair.com/CLEAR_CONTENT_URL.axd","WDS_EXPANDED_MODIFY_SEARCH":false,"WDS_SB_HOTEL_TYPE":"SBH","WDS_ATC_REFUND_ALLOWED":true,"WDS_PREV_NEXT_WEEK_BOUND_INDEX":-1,"WDS_ENABLE_PARKING":true,"WDS_ADARA_PIXEL_ANALYTICS_URL":"https://tag.yieldoptimizer.com/ps/ps","WDS_PROMOCODE_FF_LIST":null,"WDS_CFF_TOUSE":"CFF01FEB14","WDS_HOTEL_RECOMMENDATION_PANEL_URL":"https://en.aegeanair.com/PromoSlots.axd","WDS_ONLY_DIRECT_REQUESTED":false,"WDS_PROMOCODE_PAXTYPE_LIST":null,"WDS_EXTRAS_DEFAULT_PANEL_ORDER":["BAGGAGE","MEALS","INSURANCE","PARKING","DONATION"],"WDS_INSURANCE_PANEL_URL":"https://en.aegeanair.com/PromoSlots.axd","WDS_PROMOCODE_AIRLINE_LIST":null,"WDS_HOTEL_ENABLED":true,"WDS_ALLIANCE_CARRIER_CODES":["JP","A3","AC","CA","AI","NZ","NH","OZ","OS","AV","O6","SN","CM","OU","MS","ET","BR","LO","LH","SK","ZH","SQ","SA","LX","TP","TG","TK","UA"],"WDS_ECONOMY_WARNING_NATIONAL_NAS_ALPHA":["X"],"WDS_ADVERTISING_PANEL_CONF_ACTIVATED":true,"WDS_CALLCENTER_EMAIL":"res1@aegeanair.com","WDS_3DS_DISABLED_CURRENCIES":null,"WDS_PROMOTION_RBD_LIST":["P"],"WDS_FREQUENT_FLYER_PAX_TYPE":["ADT","B15","C07","C03","CHD"],"WDS_SERVICING_DISABLED":false,"WDS_ASSISTANCE_SSR_FORM_UPTO":48,"WDS_LIMITED_BAGGAGE_PAX_TYPES":["INF","CHD","^(C\\d\\d)$","^(U\\d\\d)$"],"WDS_CAR_ENABLED":true,"WDS_LEGACY_UI_URL":"https://e-ticket.aegeanair.com/pl/A3Online/wds/Override.action","WDS_OLYMPIC_TRACKING":false,"WDS_BAGGAGE_POLICY_PANEL_ITCL_ACTIVATED":true,"WDS_LATE_LOGIN_URL":"https://en.aegeanair.com/api/v1/members/auth","WDS_PROMOCODE_OFFICEID_LIST":null,"WDS_EXTERNAL_CSS_URL":"https://en.aegeanair.com/css/1A/responsive.css?v=3","WDS_PARKING_PANEL_URL":"https://en.aegeanair.com/PromoSlots.axd","WDS_MEAL_HANDLER_URL":"https://en.aegeanair.com/MealHandler.axd","WDS_ATC_SHOPPER_ACTIVATED":true,"WDS_DONATION_PANEL_URL":"https://en.aegeanair.com/PromoSlots.axd","WDS_MY_BOOKING_PASSENGER_EXPANDED":false,"WDS_SB_CAR_TIMEOUT":30000,"WDS_MEAL_SUPPORTED_PAX_TYPE":["ADT","B15","C07","C03","CHD"],"WDS_HOTEL_PANEL_URL":"https://en.aegeanair.com/PromoSlots.axd","WDS_MEAL_SUPPORTED":true,"WDS_BAGGAGE_POLICY_PANEL_FFCO_ACTIVATED":true,"WDS_LIMITED_CONTACT_DETAILS_PAX_TYPES":["INF","CHD","^(C\\d\\d)$","^(U\\d\\d)$"],"WDS_PHONE_PRESELECT_COUNTRY_CODE":"MX","WDS_CC_FEE_CARD_TYPE":{"AX":"0","DC":"0","CA":"0","VI":"0","MA":"0"},"WDS_YIELDR_ANALYTICS_URL":"https://d.254a.com/pixel","WDS_CONF_MY_BOOKING_DEFAULT_PANEL_ORDER":["CAR","HOTEL","INSURANCE","PARKING","DONATION"],"WDS_ADD_BOOK_NOW_BUTTON_EMAF":true,"WDS_AMOP_FEE":{"SOFORT":"0","PAYPAL":"0"},"WDS_URL_FACADE_NEWSEARCH":"https://en.aegeanair.com/plan/book-a-flight/","WDS_PROMOCODE_ROUTE_AUTHORIZED":true,"WDS_SMS_PROVIDER_EMAIL":"aegean_bc@mpassltd.gr"};
+    var globalParams ={"@c":".ConfigParametersHolderData","COMPANY_CITY":"^[a-zA-Z0-9 ,\\-_]*$","TRAVELLER_TYPES_WITHOUT_DOB_REQUIREMENTS":["ADT"],"GOLD_FREQUENTFLYER_OTHER_AIRLINES":["OZ:PLTM","OZ:DMPP","OZ:DMPL","OZ:DIAM","OS:G","OS:T","AV:GOLD","AV:DIAM","KF:EBP","KF:EBG","SN:G","SN:T","LO:G","LO:T","LH:G","LH:T","SK:EBP","SK:EBG","SQ:KFEG","SQ:EGTP","SQ:ESTP","SQ:KFTP","SQ:EGLP","SQ:ESLP","SQ:KFLP","SQ:QPPS","SQ:QPTP","SQ:QPLP","SQ:TPPS","SQ:TPTP","SQ:LPPS","SQ:TPLP","SA:GOLD","SA:PELT","SA:PLAT","SA:LIFE","LX:G","LX:T","JJ:BLAC","JJ:VERM","TG:PLAT","TG:GOLD"],"COMPANY_EMAIL":"^[a-zA-Z0-9 @.\\-_]*$","MEALS_FORCED_BY_FARE_FAMILY":["BUSINESTES"],"MAX_BAG_PIECES_NON1A":3,"BLACK_LIST_EMAIL_ERROR_MESSAGE_CODE_BE_SERVICING":["1321"],"WDS_OFFICE_ID_NOT_ELIGIBLE_TO_REBOOKING":["LONA308BB","TXLA308BB","SOFA308BB"],"ASSISTANCE_SSR_SVAN_FREETEXT":"ONLY DOGS ALLOWED","BUSINESS_FARE_FAMILIES":["BUSINESTES","BUSINESSI","BUSINESSAW","BUSINESS","BUSINESSUS","BUSINESSCA"],"COMPANY_ADDRESS_PATTERN":"^[a-zA-Z0-9 \\/\u0026,\\-_.]*$","SESSION_EXPIRATION_TIMEOUT":600000,"BLACK_LIST_EMAIL_ERROR_MESSAGE_CODE_BE_REBOOKING":null,"SERVICING_ADD_BAGGAGE_OB_FEES_ENABLED":false,"TRAVELLER_TYPE_CODE_ORDERING":["ADT","B15","C07","C03","INF"],"CUSTOM_PTC_FOR_CHILDREN":["C03","C07"],"COMPANY_TAX_OFFICE":"^[a-zA-Z0-9 @\\-_]*$","CARDS_FOR_FREE_WARNING":["AC","AE"],"BLACK_LIST_EMAIL_ERROR_MESSAGE_CODE_UI_REBOOKING":["0029"],"COMPANY_VAT_NUMBER":"^[a-zA-Z0-9 \\-_]*$","BAGGAGE_LIGHT_UNIT":"kg","COUNTRIES_FOR_YOUNG_ADULT_ACTIVATION":["GB"],"BARCODE_FORMAT":{"ADDITIONAL_INFO":"2","TO":"3","DAY_OF_YEAR":"3","CHECK_IN_SEQ":"5","AIRLINE":"3","FLIGHT_NUM":"5","PAX_STATUS":"1","BOOKING_CLASS":"1","FORMAT_CODE":"1","ETKT":"1","REC_LOC":"7","SEG_NUMBER":"1","PAX_NAME":"20","FROM":"3","SEAT_NUM":"4"},"EXTERNAL_PROVIDER_VERSION":2,"LAST_SEAT_AVAILABILITY_THRESHOLD":5,"SESSION_WARNING_DELAY":120000,"DOMESTIC_COUNTRY":["GR"],"ADDITIONAL_COSTS_ORDER":["CAR","HOTEL","PARKING"],"CREDIT_CARD_NUMBER_OF_EXPIRY_YEAR":12,"BLACK_LIST_EMAIL_ERROR_MESSAGE_CODE_UI_BOOKING":["0029"],"BLACK_LIST_EMAIL_ERROR_MESSAGE_CODE_BE_AWARD":null,"SESSION_MAX_RENEWS":10,"ASSISTANCE_SSR_PROPOSED":["WCHR","WCHC","WCHS","WCMP","BLND","DEAF","SVAN"],"COUNTRY_CODES":["AF","AL","DZ","AS","AD","AO","AI","AQ","AG","AR","AM","AW","AU","AT","AZ","BS","BH","BD","BB","BY","BE","BZ","BJ","BM","BT","BO","BA","BW","BR","BN","BG","BF","BI","KH","CM","CA","CV","KY","CF","TD","CL","CN","CX","CC","CO","KM","CG","CD","CK","CR","CI","HR","CU","CY","CZ","DK","DJ","DM","DO","TP","EC","EG","SV","GQ","ER","EE","ET","FO","FK","FJ","FI","FR","GF","PF","GA","GM","GE","DE","GH","GI","GR","GL","GD","GP","GU","GT","GN","GW","GY","HT","HN","HK","HU","IS","IN","ID","IR","IQ","IE","IM","IL","IT","JM","JP","JT","JO","KZ","KE","KI","KP","KR","KW","KG","LA","LV","LB","LS","LR","LY","LI","LT","LU","MO","MK","MG","MW","MY","MV","ML","MT","MP","MH","MQ","MR","MU","YT","MX","FM","MD","MC","MN","ME","MS","MA","MZ","NA","NR","NP","NL","AN","NC","NZ","NI","NE","NG","NU","NF","NO","OM","PK","PW","PA","PG","PY","PE","PH","PN","PL","PT","PR","QA","RE","RO","RU","RW","BL","MF","WS","SM","ST","SA","SN","SC","SL","SG","SK","SI","SB","SO","ZA","ES","LK","SH","KN","LC","PM","VC","RS","SD","SR","SZ","SE","CH","SY","TW","TJ","TZ","TH","TL","TG","TK","TO","TT","TN","TR","TM","TC","TV","UG","UA","MM","AE","GB","UY","UM","US","UZ","VU","VA","VE","VN","VG","VI","WF","YE","ZR","ZM","ZW"],"BLACK_LIST_EMAIL_ERROR_MESSAGE_CODE_UI_SERVICING":["0029"],"COMPANY_NAME_PATTERN":"^[a-zA-Z0-9 \\/\u0026,.@\\-_]*$","MAX_TOTAL_LENGTH_NAME":47,"MAX_BAG_PIECES":5,"MYBOOKING_REDIRECTION_REFERER":"sitecore","XSS_VALIDATION_EXCLUSION_PARAMETERS":{"dyn/air/booking/fromHotelPage.json":"WDS_HOTEL_OBJECT","dyn/air/booking/fromCarPage.json":"WDS_CAR_OBJECT"},"LAST_NAME_PATTERN":"^[-.\u0027,A-Za-z ]{2,40}$","AEGEAN_AIRLINE_CODE":"A3","MEALS_PROPOSED":["AVML","BBML","BLML","CHML","DBML","FPML","GFML","HNML","LCML","LFML","LSML","KSML","MOML","NLML","RVML","SFML","VGML","VJML","VLML","VOML"],"BLACK_LIST_EMAIL_ERROR_MESSAGE_CODE_BE_ADDBAGGAGE":null,"COMPANY_POSTCODE":"^[a-zA-Z0-9 ]*$","OLYMPIC_AIRLINE_CODE":"OA","BAGGAGE_HEAVY_UNIT":"kg","BAGGAGE_LIGHT_QUANTITY":23,"BLACK_LIST_EMAIL_ERROR_MESSAGE_CODE_BE_BOOKING":null,"XBAG_FREETEXT":"TTL{{number}}PC","BE_BLOCKING_ERRORS":["10402","4002","4004","4616","9100","9200","9201","66002","10001","7110","8104","8132","9020","10000","10031","10036","3001","10032","10037"],"FIRST_NAME_PATTERN":"^[-.A-Za-z ]{2,20}$","BLACK_LIST_EMAIL_ERROR_MESSAGE_CODE_UI_AWARD":["0029"],"DEFAULT_SERVICE_AMOUNTS":{"DONA":"2"},"BAGGAGE_HEAVY_QUANTITY":32,"ASSISTANCE_SSR_BLDF_FREETEXT":"BLIND AND DEAF PASSENGER","DEBIT_CARDS_CODES":["DV","CD","MA","AE","AC"],"COMPANY_OCCUPATION_PATTERN":"^[a-zA-Z0-9 \\/\u0026,\\-_]*$","BLACK_LIST_EMAIL_ERROR_MESSAGE_CODE_UI_ADDBAGGAGE":["0029"],"PARKING_ENABLED_AIRPORTS":["ATH"],"COMPANY_AREA":"^[a-zA-Z0-9 ]*$"};
+  
+    var firstBeCall;!function(e){var t=function(){function e(){}return e.getInstance=function(){return e.modelParser},e.modelParser=new ddk.fwk.ModelParser("A3"),e}();e.ModelParserHolder=t;var n=function(){function e(){this.onFirstBomResponse=function(e){var n=JSON.parse(e);this.firstBomReceived={bom:t.getInstance().parse(n.bom),integration_context:n.integration_context},console.warn("bom",this.firstBomReceived.bom),this.onFirstBOMRevived(this.firstBomReceived)},this.onFirstBOMRevived=function(e){},this.firstBomReceived=null;var e=this;window.registerBomReviveCallback=function(t){e.firstBomReceived?t(e.firstBomReceived):e.onFirstBOMRevived=function(e){t(e)}}}return e.prototype.sendRequest=function(e,t,n,o,r){var s=new XMLHttpRequest,i=this;s.onreadystatechange=function(e){s.readyState===XMLHttpRequest.DONE&&(200===s.status?i.onFirstBomResponse(s.response):console.warn("First bom ajax error"))},s.open("POST",e+r+".json;jsessionid="+t),s.setRequestHeader("Content-Type","application/x-www-form-urlencoded"),s.send("dataType:json&"+this.computeUrlEncodedParameters(o,n))},e.prototype.computeUrlEncodedParameters=function(e,t){var n=["FORCE_OVERRIDE=TRUE"];return n.push("LANGUAGE="+e.LANGUAGE),n.push("SITE="+e.SITE),n.push("SKIN="+t),n.push("data="+this.computeDataToSend(e)),n.join("&")},e.prototype.computeDataToSend=function(t){for(var n=JSON.parse(JSON.stringify(t)),o=0,r=e.PARAMS_TO_REMOVE;o<r.length;o++){var s=r[o];delete n[s]}return encodeURIComponent(JSON.stringify(n))},e.PARAMS_TO_REMOVE=["SITE","LANGUAGE","FORCE_OVERRIDE","SKIN"],e}();e.FirstBeCall=n}(firstBeCall||(firstBeCall={}));
+    var firstBeCallTargetName = 'fromCalendarPage';
+    if(firstBeCallTargetName){       
+       var firstBeCallInstance = new firstBeCall.FirstBeCall();
+       firstBeCallInstance.sendRequest('https://e-ticket.aegeanair.com/A3Responsive/dyn/air/booking/', jsessionid, 'skin_aegean', entryRequestParams, firstBeCallTargetName);
+    } else {
+      requestDoneFromJsp = false;
+    }
+  
+    // Credentials to connect to the Loctool when server is Mona
+    var monaLocalizationCredentials =null;
+  </script>
+
+
+
+
+ <script src="../../../cui-a3online-responsive_R3.1.27_240117/js/vendor.min.js"></script>
+
+ <!-- URL jsessionid rewrite -->
+  <script>
+    function appendInputTo(name, value, form){
+      x = $("<input type='hidden'>").attr({
+        name: name,
+        value: value
+      });
+      x.appendTo(form);
+    }
+  
+    try{
+      var url = window.location.href;
+      if(window.location.href.indexOf("jsessionid") == -1){
+        url = url.replace(/\?.*#!/,"#!");
+        url = url.replace("#!", ";jsessionid="+jsessionid+"#!");
+        window.history.replaceState({},"", url);
+      }
+    }
+    catch(e){
+      //Some browser doesn't support the replaceState method. In this case we use a workaround
+      //for putting the jsessionid in the URL by a new request
+      $( document ).ready(function(){
+        var f = $("#_DELME");
+        for( i in entryRequestParams){
+        appendInputTo(i, entryRequestParams[i], f);
+        }
+        //This Parameter is just used to find in server log the user agent
+        appendInputTo("WDS_BROWSER", navigator.userAgent, f);
+  
+        var url = window.location.href;
+        url = url.replace(/\?.*#!/,"#!");
+        url = url.replace("#!", ";jsessionid="+jsessionid+"#!");
+        f.attr('action', url);
+        f.submit();
+      });
+    }
+  </script>
+
+   <!-- TODO when the user agent is retrieved server side move it to the end -->
+   <script>var _baseUrl=location.protocol+"//"+location.hostname+(location.port?":"+location.port:"");_baseUrl+=location.pathname;var serverRoot=location.pathname.split("/").slice(0,-4).join("/");serverRoot=location.protocol+"//"+location.hostname+(location.port?":"+location.port:"")+serverRoot,document.getElementsByTagName("base")[0].href=_baseUrl;var flow=location.pathname.split("/").slice(-2,-1)[0],airUrl=_baseUrl.replace(/;jsessionid=.*/,"").split("/").slice(0,-2).join("/");airUrl=airUrl.replace(/;jsessionid=.*/,""),"/"!=airUrl.substr(airUrl.length-1)&&(airUrl+="/");var ua=navigator.userAgent.toLowerCase();if(-1!=ua.indexOf("safari")&&-1==ua.indexOf("chrome")){var safariPolyfill=document.createElement("script");safariPolyfill.setAttribute("type","text/javascript"),safariPolyfill.setAttribute("src","../../../cui-a3online-responsive_R3.1.27_240117/js/safari.min.js"),"undefined"!=typeof safariPolyfill&&document.getElementsByTagName("head")[0].appendChild(safariPolyfill)}"addEventListener"in document&&document.addEventListener("DOMContentLoaded",function(){FastClick.attach(document.body)},!1);var debugInfoEnabled=!1;!function(){for(var method,noop=function(){},methods=["assert","cd","clear","count","countReset","debug","dir","dirxml","error","exception","group","groupCollapsed","groupEnd","info","log","markTimeline","profile","profileEnd","select","table","time","timeEnd","timeStamp","timeline","timelineEnd","trace","warn"],length=methods.length,console=window.console=window.console||{};length--;)method=methods[length],console[method]||(console[method]=noop)}();var monaLocalizationCredentials=null;</script>   
+<script src="..&#x2f;..&#x2f;..&#x2f;cui-a3online-responsive_R3.1.27_240117&#x2f;ts&#x2f;tsBooking.min.js"></script>
+
+   
+      <!-- The trick with media attribute enables to render the page (and thus to do the first be call) without waiting for the css to be loaded -->
+      <link rel="stylesheet" type="text/css" href="https&#x3a;&#x2f;&#x2f;en.aegeanair.com&#x2f;css&#x2f;1A&#x2f;responsive.css&#x3f;v&#x3d;3" media="none" onload="if(media!='all')media='all'">
+   
+
+   <!-- Append dynamically the CSS link to the document for fixing the waiting banner issue
+        (Otherwise the waiting panel is misplaced for a short period of time before CSS is loaded)-->
+   <script>
+
+        function appendCssLink(url){
+        head = document.getElementsByTagName('head')[0],
+        link = document.createElement('link');
+        link.type = "text/css";
+        link.rel = "stylesheet";
+        link.href = url;
+        head.appendChild(link);
+        }
+
+        function checkIfCssIsReady(){
+        var interval = setInterval(function() {
+        if ($('.waitingPanel').css("position")=="fixed"){
+        $('.waitingPanel').removeClass('hideDuringCssLoad');
+        clearInterval(interval);
+        }
+        },50);
+        }
+
+        <!-- TODO retrieve the user agent server side -->
+        var browserName = SkinServiceStatics.getCrossbrowserTag();
+        var skinName ="aegean";
+        var url = "../../../cui-a3online-responsive_R3.1.27_240117/css/"+skinName+"-"+browserName+".css";
+        appendCssLink(url);
+
+        $( document ).ready(function(){
+        //if the css is not loaded yet
+        if($('.waitingPanel').hasClass('hideDuringCssLoad')){
+        checkIfCssIsReady();
+        }
+        });
+
+        </script>
+
+   <!-- Google Tag Manager -->
+   <script>
+        var dataLayer = [{
+        DeviceApp: wdsParams.WDS_DEVICE_APP,
+        DeviceName: wdsParams.WDS_DEVICE_NAME,
+        DeviceOs: wdsParams.WDS_DEVICE_OS,
+        DeviceViewport: wdsParams.WDS_DEVICE_VIEWPORT
+        }];
+        </script>
+
+   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-PTB8PD');
+        </script>
+   <!-- End Google Tag Manager -->
+
+   <!--[if lte IE 9]>
+        <script src="../../../cui-a3online-responsive_R3.1.27_240117/js/ie9.min.js"></script>
+        <![endif]-->
+   <script src="../../../cui-a3online-responsive_R3.1.27_240117/js/common.min.js"></script>   
+
+   
+   
+    <!-- Tealeaf analytics script -->
+   
+
+</body>
+</html>
