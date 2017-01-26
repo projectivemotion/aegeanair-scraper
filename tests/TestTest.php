@@ -24,7 +24,8 @@ class TestTest extends PHPUnit_Framework_TestCase
     public function testExtractApiParams()
     {
         $scraper = new \projectivemotion\AegeanScraper\Scraper();
-        $post2  =   $scraper->getApiParams(self::readFile('booking_reply.html'));
+        $params  =   $scraper->getApiParams(self::readFile('booking_reply.html'));
+        $post2 = $params['js'];
 
         $this->assertNotEmpty($post2);
         $this->assertArrayHasKey('jsessionid', $post2);

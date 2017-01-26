@@ -48,7 +48,22 @@ class Scraper
             if(!$json) continue;
             $vars[$var] = $json[0];
         }
-        return $vars;
+
+        $params = [
+            'action' =>sprintf("https://e-ticket.aegeanair.com/A3Responsive/dyn/air/booking/%s.json;%s",
+                $vars['firstBeCallTargetName'], $vars['jsessionid']),
+            'post'  => [
+                "dataType:json" => "",
+                'FORCE_OVERRIDE' => $vars['entryRequestParams']->FORCE_OVERRIDE ? "TRUE" : "FALSE",
+                'LANGUAGE' => $vars['entryRequestParams']->LANGUAGE,
+                'SITE' => $vars['entryRequestParams']->SITE,
+                'SKIN' => $vars['entryRequestParams']->SKIN,
+                'data' => \json_encode($vars['entryRequestParams'])
+            ],
+            'js'    => $vars
+        ];
+
+        return $params;
     }
 
     /**
