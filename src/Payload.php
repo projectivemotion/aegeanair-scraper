@@ -54,23 +54,24 @@ class Payload
             $origin = $this->getLocation($bound->searchDestination->originLocation);
             $destination = $this->getLocation($bound->searchDestination->destinationLocation);
 
-            $segments   =   [];
             foreach($bound->flights as $flight){
+                $segments   =   [];
                 foreach($flight->segments as $segmentdata){
                     $segment    =   [
                         'operatingAirline'  =>  isset($segmentdata->operatingAirline) ? $this->getDictionary('A3Airline', $segmentdata->operatingAirline) : null,
                         'originLocation'    => $this->getLocation($segmentdata->originLocation)->parent->code,
                         'destinationLocation'    => $this->getLocation($segmentdata->destinationLocation)->parent->code,
-                        'destinationDate'   =>  date_create($segmentdata->destinationDate/1000),
+                        'destinationDate'   =>  ($segmentdata->destinationDate/1000),
                         'duration'  =>  $segmentdata->duration/1000,
                         'equipment' =>  $this->getDictionary('A3Equipment', $segmentdata->equipment),
                         'flightIdentifier'  => $segmentdata->flightIdentifier
                     ];
-                    $segment['flightIdentifier']->originDate = date_create($segment['flightIdentifier']->originDate/1000);
+                    $segment['code']    =   $segment['flightIdentifier']->marketingAirline . $segment['flightIdentifier']->flightNumber;
+                    $segment['flightIdentifier']->originDate = ($segment['flightIdentifier']->originDate/1000);
                     unset($segment['flightIdentifier']->{'@class'});
-                    $segments[$segment['flightIdentifier']->marketingAirline . $segment['flightIdentifier']->flightNumber] = $segment;
+                    $segments[$segment['code']] = (object)$segment;
                 }
-                $flight = [
+                $flight = (object)[
                     'origin'    => $origin->code,
                     'destination'   => $destination->code,
                     'price' => iterator_to_array($this->genPrice($bound, $flight->id)),

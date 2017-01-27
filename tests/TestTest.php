@@ -17,15 +17,15 @@ class TestTest extends PHPUnit_Framework_TestCase
         $scraper = new \projectivemotion\AegeanScraper\Scraper();
         $post2  =   $scraper->getRedirectPostInfo(self::readFile('posthandler_response.html'));
 
-        $this->assertEquals('https://e-ticket.aegeanair.com/A3Responsive/dyn/air/booking/#!/flight', $post2['action']);
-        $this->assertCount(91, $post2['post']);
+        $this->assertEquals('https://e-ticket.aegeanair.com/A3Responsive/dyn/air/booking/#!/flight', $post2->action);
+        $this->assertCount(91, $post2->post);
     }
 
     public function testExtractApiParams()
     {
         $scraper = new \projectivemotion\AegeanScraper\Scraper();
         $params  =   $scraper->getApiParams(self::readFile('booking_response.html'));
-        $post2 = $params['js'];
+        $post2 = $params->js;
 
         $this->assertNotEmpty($post2);
         $this->assertArrayHasKey('jsessionid', $post2);
