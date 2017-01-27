@@ -65,15 +65,15 @@ class Payload
                         'operatingAirline'  =>  isset($segmentdata->operatingAirline) ? $this->getDictionary('A3Airline', $segmentdata->operatingAirline) : null,
                         'originLocation'    => $this->getLocation($segmentdata->originLocation)->parent->code,
                         'destinationLocation'    => $this->getLocation($segmentdata->destinationLocation)->parent->code,
-                        'destinationDate'   =>  ($segmentdata->destinationDate/1000),
+                        'destinationDate'   =>  date_create('@' . $segmentdata->destinationDate/1000),
                         'duration'  =>  $segmentdata->duration/1000,
                         'equipment' =>  $this->getDictionary('A3Equipment', $segmentdata->equipment),
                         'flightIdentifier'  => $segmentdata->flightIdentifier
                     ];
                     $segment['code']    =   $segment['flightIdentifier']->marketingAirline . $segment['flightIdentifier']->flightNumber;
-                    $segment['flightIdentifier']->originDate = ($segment['flightIdentifier']->originDate/1000);
+                    $segment['flightIdentifier']->originDate = date_create('@' . $segment['flightIdentifier']->originDate/1000);
                     unset($segment['flightIdentifier']->{'@class'});
-                    $segments[$segment['code']] = (object)$segment;
+                    $segments[] = (object)$segment;
                 }
                 $flight = (object)[
                     'origin'    => $origin->code,

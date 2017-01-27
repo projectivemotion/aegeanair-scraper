@@ -38,7 +38,7 @@ $Q->setOrigin($origin);
 $Q->setDepartureDate(date_create_from_format('Y-m-d', $departure_date_str));
 $Q->setReturnDate(date_create_from_format('Y-m-d', $return_date_str));
 
-//$Q->setAdults(2);
+$Q->setAdults(2);
 
 $flights = $Scraper->getFlights($Q);
 
@@ -49,13 +49,14 @@ else{
         "from", "to", "flex", "business", "light", "flights"
     );
     foreach($flights as $flight){
-        printf("%-8s|%-8s|%8s|%8s|%8s|%-16s\n",
+        printf("%-8s|%-8s|%-8s|%8s|%8s|%8s|%-16s\n",
         $flight->origin,
             $flight->destination,
+            $flight->segments[0]->flightIdentifier->originDate->format(DateTime::RFC3339),
             $flight->price->FLEXTEST ? $flight->price->FLEXTEST->amount . ' ' .  $flight->price->FLEXTEST->currency : '',
             $flight->price->BUSINESTES ? $flight->price->BUSINESTES->amount. ' ' .  $flight->price->BUSINESTES->currency : '',
             $flight->price->LIGHT ? $flight->price->LIGHT->amount. ' ' .  $flight->price->LIGHT->currency : '',
-            implode(', ', array_keys($flight->segments))
+            $flight->segments[0]->code
         );
     }
 
