@@ -8,8 +8,63 @@
 namespace projectivemotion\AegeanScraper;
 
 
+use GuzzleHttp\Client;
+
 class Scraper
 {
+    /**
+     * @var Client
+     */
+    protected $client;
+
+    protected $options  =   [];
+
+
+    public function __construct($options    =   [])
+    {
+        $this->options  =   [
+                'cookies' => true
+            ] + $options;
+    }
+
+    public function getClient()
+    {
+        if(!$this->client){
+            $this->setClient(new Client($this->options));
+        }
+        return $this->client;
+    }
+
+    public function setClient($client)
+    {
+        $this->client = $client;
+    }
+
+    public function api($url, $post = null)
+    {
+        if(is_object($url))
+        {
+            $post   =   $url->post;
+            $url    =   $url->action;
+        }
+
+        return $this->getClient()->post($url, $post ? ['form_params' => $post] : null);
+    }
+
+    public function getFlights(Query $q)
+    {
+        $response1 = $this->api('https://en.aegeanair.com/PostHandler.axd', $q->getPost());
+        $params = $this->getRedirectPostInfo($response1->getBody());
+        $response2 = $this->api($params);
+
+        $params   =   $this->getApiParams($response2->getBody());
+        $flightdata =   $this->api($params);
+
+        $flights    =   $this->parseJsonPayload(\json_decode($flightdata->getBody()));
+
+        return iterator_to_array($flights);
+    }
+
     public function getRedirectPostInfo($body)
     {
         $info = ['action' => '', 'post' => []];
@@ -32,7 +87,7 @@ class Scraper
 
         $info['action'] =   $form_el[0]->getAttribute('action');
 
-        return $info;
+        return (object)$info;
     }
 
     public function getApiParams($body)
@@ -63,9 +118,20 @@ class Scraper
             'js'    => $vars
         ];
 
-        return $params;
+        return (object)$params;
     }
 
+    public function parseJsonPayload($jsonobj)
+    {
+        $bom = isset($jsonobj->bom) ? \json_decode($jsonobj->bom) : null;
+        if(!$bom || !$bom->modelObject || !$bom->modelObject->availabilities
+            || !$bom->modelObject->availabilities->upsell)
+            throw new Exception('json error');
+
+        $payload = new Payload($bom);
+
+        return $payload->genFlights();
+    }
     /**
      * @param $body
      * @return \DOMDocument

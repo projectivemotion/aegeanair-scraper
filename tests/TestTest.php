@@ -15,7 +15,7 @@ class TestTest extends PHPUnit_Framework_TestCase
     public function testReplyRedirect()
     {
         $scraper = new \projectivemotion\AegeanScraper\Scraper();
-        $post2  =   $scraper->getRedirectPostInfo(self::readFile('posthandler_reply.html'));
+        $post2  =   $scraper->getRedirectPostInfo(self::readFile('posthandler_response.html'));
 
         $this->assertEquals('https://e-ticket.aegeanair.com/A3Responsive/dyn/air/booking/#!/flight', $post2['action']);
         $this->assertCount(91, $post2['post']);
@@ -24,7 +24,7 @@ class TestTest extends PHPUnit_Framework_TestCase
     public function testExtractApiParams()
     {
         $scraper = new \projectivemotion\AegeanScraper\Scraper();
-        $params  =   $scraper->getApiParams(self::readFile('booking_reply.html'));
+        $params  =   $scraper->getApiParams(self::readFile('booking_response.html'));
         $post2 = $params['js'];
 
         $this->assertNotEmpty($post2);
@@ -38,6 +38,15 @@ class TestTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals('ATHA308AA', $post2['entryRequestParams']->SO_SITE_QUEUE_OFFICE_ID);
         $this->assertEquals('https://en.aegeanair.com/PromoCodeHandler.axd', $post2['entryRequestParams']->WDS_PROMOCODE_HANDLER_URL);
+    }
+
+    public function testParseJsonData()
+    {
+        $scraper = new \projectivemotion\AegeanScraper\Scraper();
+        $flights  =   $scraper->parseJsonPayload(\json_decode(self::readFile('data_response.json')));
+
+        $arr = iterator_to_array($flights);
+        $this->assertCount(12, $arr);
     }
 
 }
