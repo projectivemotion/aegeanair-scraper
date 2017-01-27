@@ -1,5 +1,8 @@
 {
     "name": "projectivemotion/aegean-scraper",
+    "description": "Aegean.com Airfare and Flight Information Scraper ",
+    "minimum-stability": "stable",
+    "keywords": ["airline", "scraper","aegean"],
     "require": {
         "guzzlehttp/guzzle": "^6.2"
     },
@@ -10,7 +13,9 @@
     "authors": [
         {
             "name": "Amado Martinez",
-            "email": "amado@projectivemotion.com"
+            "email": "amado@projectivemotion.com",
+            "role": "Developer",
+            "homepage": "http://amadomartinez.mx"
         }
     ],
     "autoload": {
