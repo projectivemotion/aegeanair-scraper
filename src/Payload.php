@@ -74,7 +74,7 @@ class Payload
                 $flight = (object)[
                     'origin'    => $origin->code,
                     'destination'   => $destination->code,
-                    'price' => iterator_to_array($this->genPrice($bound, $flight->id)),
+                    'price' => (object)iterator_to_array($this->genPrice($bound, $flight->id)),
                     'segments'  => $segments
                 ];
 
