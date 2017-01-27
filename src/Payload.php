@@ -43,8 +43,12 @@ class Payload
         foreach($bound->fareFamilies as $fareFamily){
             $farekey    =   "{$fareFamily}_{$flight_id}";
             if(!isset($bound->defaultDisplays->$farekey)) continue;
+
+            $per_traveler_adult =   $bound->defaultDisplays->$farekey->price->pricePerTravellerTypes->ADT->priceForOneTravellerOfThisType;
+            $total_per_adult    =   $per_traveler_adult->totalPrice->cashAmount;
+            unset($total_per_adult->{'@class'});
             // @todo add with tax without tax etc
-            yield $fareFamily => $bound->defaultDisplays->$farekey->price->price->totalPrice->cashAmount;
+            yield $fareFamily => $total_per_adult;
         }
     }
 
