@@ -1,6 +1,6 @@
 {
-    "name": "projectivemotion/aegean-scraper",
-    "description": "Aegean.com Airfare and Flight Information Scraper ",
+    "name": "projectivemotion/aegeanair-scraper",
+    "description": "Airfare and Flight Information Scraper for Aegean Airlines",
     "minimum-stability": "stable",
     "keywords": ["airline", "scraper","aegean"],
     "require": {
