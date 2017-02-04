@@ -10,11 +10,11 @@ Last Verified: 2017-02-04
 * Check out my other projects: [Blueair-Scraper](https://github.com/projectivemotion/blueair-scraper), [Transavia-Scraper](https://github.com/projectivemotion/transavia-scraper), [Wizzair-Scraper](https://github.com/projectivemotion/wizzair-scraper), [Hotelscom-Scraper](https://github.com/projectivemotion/hotelscom-scraper), [EasyJet-Scraper](https://github.com/projectivemotion/easyjet-scraper), [Planitour-Scraper](https://github.com/projectivemotion/planitour-scraper), [Xgbs-Soap Client](https://github.com/projectivemotion/xgbs-soap)
 
 ### Manual Installation
-    git clone https://github.com/projectivemotion/aegean-scraper.git
-    cd aegean-scraper && composer install --no-dev
+    git clone https://github.com/projectivemotion/aegeanair-scraper.git
+    cd aegeanair-scraper && composer install --no-dev
     
 ### Composer Installation
-    composer require projectivemotion/aegean-scraper
+    composer require projectivemotion/aegeanair-scraper
     
 ### Requirements
     PHP 5.6
